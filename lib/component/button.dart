@@ -29,7 +29,7 @@ class MyButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onTap,
           style: OutlinedButton.styleFrom(
-            side: BorderSide(color: outlineColor, width: 1.5),
+            side: BorderSide(color: outlineColor, width: 1.3),
             foregroundColor: txtColor,
             backgroundColor: bgButton,
             shape: RoundedRectangleBorder(
