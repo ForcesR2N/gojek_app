@@ -11,7 +11,7 @@ class MyButton extends StatelessWidget {
   final Color outlineColor;
 
   const MyButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onTap,
     this.width = 400.0,
@@ -19,7 +19,7 @@ class MyButton extends StatelessWidget {
     this.bgButton = AppColor.buttonGreen,
     this.txtColor = Colors.white,
     this.outlineColor = Colors.transparent,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

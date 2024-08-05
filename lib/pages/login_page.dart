@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:loginpage_gojek/component/button.dart';
+import 'package:loginpage_gojek/pages/login_or_register.dart';
 import 'package:loginpage_gojek/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final void Function()? onTap;
+
+  const LoginPage({super.key, required this.onTap});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -18,22 +21,25 @@ class _LoginPageState extends State<LoginPage> {
     {
       'path': 'assets/gojek_image_1.png',
       'header': 'Selamat datang di Gojek!',
-      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+      'text':
+          'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun',
     },
     {
       'path': 'assets/gojek_image_2.png',
       'header': 'Transportasi & logistic',
-      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+      'text':
+          'Anterin kamu jalan atau ambilin barang lebih gampang tinggal ngeklik doang~',
     },
     {
       'path': 'assets/gojek_image_3.png',
       'header': 'Beli makanan & belanja',
-      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+      'text': 'Lagi ngidam sesuatu?, Gojek beliin ga pake lama.',
     },
     {
       'path': 'assets/gojek_image_4.png',
       'header': 'Pembayaran',
-      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+      'text':
+          'Bisa beli pulsa, bayar tagihan listrik atau air, dan juga transfer sana sini',
     },
   ];
 
@@ -60,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 CarouselSlider(
                   carouselController: _controller,
                   options: CarouselOptions(
-                    height: 350.0,
+                    height: 300.0,
                     autoPlay: false,
                     enlargeCenterPage: true,
                     onPageChanged: (index, reason) {
@@ -94,14 +100,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 17),
-                          margin: EdgeInsets.only(bottom: 50),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
                             textAlign: TextAlign.center,
                             item['text']!,
                             style: const TextStyle(
                               color: Colors.black,
-                              fontSize: 15,
+                              fontSize: 14,
                             ),
                           ),
                         ),
@@ -109,20 +114,23 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   }).toList(),
                 ),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: imgList.asMap().entries.map((entry) {
                     return GestureDetector(
                       onTap: () => _controller.animateToPage(entry.key),
                       child: Container(
-                        width: 12.0,
-                        height: 12.0,
-                        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                        width: 8.0,
+                        height: 8.0,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 4.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: (Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : AppColor.buttonGreen)
+                          color: (Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : AppColor.buttonGreen)
                               .withOpacity(_current == entry.key ? 0.9 : 0.4),
                         ),
                       ),
@@ -132,26 +140,37 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
+          const SizedBox(height: 23),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               MyButton(
                 text: 'Masuk',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginOrRegister(),
+                    ),
+                  );
+                },
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               MyButton(
                 text: 'Belum ada akun?, Daftar dulu',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginOrRegister(),
+                    ),
+                  );
+                },
                 bgButton: Colors.white,
                 txtColor: AppColor.buttonGreen,
                 outlineColor: AppColor.buttonGreen,
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Wrap(
