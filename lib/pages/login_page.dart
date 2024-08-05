@@ -48,16 +48,26 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Column(
         children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                'assets/Gojek_logo_2022.png',
-                width: 100,
-                height: 100,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Image.asset(
+                  'assets/Gojek_logo_2022.png',
+                  width: 100,
+                  height: 100,
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: Image.asset(
+                  'assets/change_language.png',
+                  width: 150,
+                  height: 150,
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: Column(

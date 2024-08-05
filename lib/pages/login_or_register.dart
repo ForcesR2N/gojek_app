@@ -16,6 +16,16 @@ class LoginOrRegister extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Image.asset(
+              'assets/change_language.png',
+              width: 150,
+              height: 150,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(10.0),
@@ -43,7 +53,7 @@ class LoginOrRegister extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 8.0, top: 30, bottom: 14),
+              padding: EdgeInsets.only(left: 8.0, top: 30, bottom: 10),
               child: Text(
                 "Nomor HP",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
@@ -134,8 +144,8 @@ class LoginOrRegister extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 27,
             ),
             OutlinedButton(
               onPressed: () {},
@@ -160,6 +170,20 @@ class LoginOrRegister extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Center(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/login_use_number1.png',
+                      height: 60,
+                      width: 100,
+                    ),
+                  ],
                 ),
               ),
             )
