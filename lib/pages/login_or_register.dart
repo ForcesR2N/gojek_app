@@ -81,9 +81,7 @@ class LoginOrRegister extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                      width:
-                          10),
+                  const SizedBox(width: 10),
                   const Expanded(
                     child: MyTextfield(
                       keyboardType: true,
@@ -117,23 +115,52 @@ class LoginOrRegister extends StatelessWidget {
                     'Saya menyetujui ',
                     style: TextStyle(fontSize: 12),
                   ),
-                    Text(
+                  Text(
                     'Ketentuan Layanan ',
-                    style: TextStyle(fontSize: 12, color: AppColor.buttonGreen), 
+                    style: TextStyle(fontSize: 12, color: AppColor.buttonGreen),
                   ),
                   Text(
                     '& ',
                     style: TextStyle(fontSize: 12),
                   ),
-                    Text(
+                  Text(
                     'Kebijakan Privasi ',
-                    style: TextStyle(fontSize: 12, color: AppColor.buttonGreen), 
+                    style: TextStyle(fontSize: 12, color: AppColor.buttonGreen),
                   ),
                   Text(
                     'Gojek',
                     style: TextStyle(fontSize: 12),
                   ),
                 ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: Colors.black12, width: 1.3),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                elevation: 1,
+              ),
+              child: Container(
+                height: 35,
+                width: 215,
+                alignment: Alignment.center,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text(
+                    'Ada kendala atau lupa nomor?',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
             )
           ],
