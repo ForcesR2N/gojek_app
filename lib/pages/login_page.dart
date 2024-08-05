@@ -3,18 +3,42 @@ import 'package:loginpage_gojek/component/button.dart';
 import 'package:loginpage_gojek/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final List<Map<String, String>> imgList = [
-      {'path': 'assets/gojek_image_1.png', 'header': 'Selamat datang di Gojek!', 'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'},
-      {'path': 'assets/gojek_image_2.png', 'header': 'Transportasi & logistic', 'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'},
-      {'path': 'assets/gojek_image_3.png', 'header': 'Beli makanan & belanja', 'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'},
-      {'path': 'assets/gojek_image_4.png', 'header': 'Pembayaran', 'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'},
-    ];
+  _LoginPageState createState() => _LoginPageState();
+}
 
+class _LoginPageState extends State<LoginPage> {
+  final CarouselController _controller = CarouselController();
+  int _current = 0;
+
+  final List<Map<String, String>> imgList = [
+    {
+      'path': 'assets/gojek_image_1.png',
+      'header': 'Selamat datang di Gojek!',
+      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+    },
+    {
+      'path': 'assets/gojek_image_2.png',
+      'header': 'Transportasi & logistic',
+      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+    },
+    {
+      'path': 'assets/gojek_image_3.png',
+      'header': 'Beli makanan & belanja',
+      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+    },
+    {
+      'path': 'assets/gojek_image_4.png',
+      'header': 'Pembayaran',
+      'text': 'Aplikasi yang buat hidupmu lebih nyaman. Siap bantu kebutuhanmu, kapan pun. Dimana pun'
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
@@ -34,10 +58,18 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CarouselSlider(
+                  carouselController: _controller,
                   options: CarouselOptions(
                     height: 350.0,
                     autoPlay: false,
                     enlargeCenterPage: true,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    },
+                    initialPage: _current,
+                    enableInfiniteScroll: false,
                   ),
                   items: imgList.map((item) {
                     return Column(
@@ -51,7 +83,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             item['header']!,
                             style: const TextStyle(
@@ -59,25 +91,41 @@ class LoginPage extends StatelessWidget {
                               fontSize: 27,
                               fontWeight: FontWeight.bold,
                             ),
-                          ), 
+                          ),
                         ),
-                        Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 0.1 
-                              ),
-                              margin: EdgeInsets.only(bottom: 50),
-                              child: Text(
-                                item['text']!, style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                ),
-                              ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 17),
+                          margin: EdgeInsets.only(bottom: 50),
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            item['text']!,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
                             ),
-                          ],
-                        )
+                          ),
+                        ),
                       ],
+                    );
+                  }).toList(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: imgList.asMap().entries.map((entry) {
+                    return GestureDetector(
+                      onTap: () => _controller.animateToPage(entry.key),
+                      child: Container(
+                        width: 12.0,
+                        height: 12.0,
+                        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: (Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : AppColor.buttonGreen)
+                              .withOpacity(_current == entry.key ? 0.9 : 0.4),
+                        ),
+                      ),
                     );
                   }).toList(),
                 ),
