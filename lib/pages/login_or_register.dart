@@ -4,6 +4,7 @@ import 'package:loginpage_gojek/utils/colors.dart';
 import 'package:loginpage_gojek/component/text_field.dart';
 
 class LoginOrRegister extends StatefulWidget {
+
   @override
   _LoginOrRegisterState createState() => _LoginOrRegisterState();
 }
@@ -119,7 +120,6 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
                 children: [
                   MyButton(
                     text: 'Lanjut',
-                    onTap: () {},
                     onPress: () {
                       setState(
                         () {

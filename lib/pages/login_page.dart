@@ -155,7 +155,6 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               MyButton(
-                onTap: (){},
                 text: 'Masuk',
                 onPress: () {
                   Navigator.push(
@@ -168,7 +167,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 15),
               MyButton(
-                onTap: () => {},
                 text: 'Belum ada akun?, Daftar dulu',
                 onPress: () {
                   Navigator.push(

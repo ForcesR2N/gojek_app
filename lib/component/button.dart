@@ -3,7 +3,6 @@ import 'package:loginpage_gojek/utils/colors.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
-  final void Function()? onTap;
   final VoidCallback onPress;
   final double width;
   final double height;
@@ -14,7 +13,6 @@ class MyButton extends StatelessWidget {
   const MyButton({
     super.key,
     required this.text,
-    required this.onTap,
     this.width = 400.0,
     this.height = 50.0,
     this.bgButton = AppColor.buttonGreen,
