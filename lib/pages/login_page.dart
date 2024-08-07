@@ -5,9 +5,9 @@ import 'package:loginpage_gojek/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class LoginPage extends StatefulWidget {
-  final void Function()? onTap;
+  final void Function()? onPress;
 
-  const LoginPage({super.key, required this.onTap});
+  const LoginPage({super.key, this.onPress, required Null Function() onTap});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -155,24 +155,26 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               MyButton(
+                onTap: (){},
                 text: 'Masuk',
-                onTap: () {
+                onPress: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LoginOrRegister(),
+                      builder: (context) => LoginOrRegister(),
                     ),
                   );
                 },
               ),
               const SizedBox(height: 15),
               MyButton(
+                onTap: () => {},
                 text: 'Belum ada akun?, Daftar dulu',
-                onTap: () {
+                onPress: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LoginOrRegister(),
+                      builder: (context) => LoginOrRegister(),
                     ),
                   );
                 },

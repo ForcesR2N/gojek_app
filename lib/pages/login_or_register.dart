@@ -3,8 +3,14 @@ import 'package:loginpage_gojek/component/button.dart';
 import 'package:loginpage_gojek/utils/colors.dart';
 import 'package:loginpage_gojek/component/text_field.dart';
 
-class LoginOrRegister extends StatelessWidget {
-  const LoginOrRegister({super.key});
+class LoginOrRegister extends StatefulWidget {
+  @override
+  _LoginOrRegisterState createState() => _LoginOrRegisterState();
+}
+
+class _LoginOrRegisterState extends State<LoginOrRegister> {
+  final TextEditingController numberController = TextEditingController();
+  String showResult = '';
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class LoginOrRegister extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
         actions: [
           Padding(
@@ -28,7 +34,7 @@ class LoginOrRegister extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +42,7 @@ class LoginOrRegister extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 8.0),
               child: Text(
-                'Selamat datang di Gojek !',
+                'Selamat datang di Gojek!',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -52,7 +58,7 @@ class LoginOrRegister extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 8.0, top: 30, bottom: 10),
               child: Text(
                 "Nomor HP",
@@ -92,8 +98,9 @@ class LoginOrRegister extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  const Expanded(
+                  Expanded(
                     child: MyTextfield(
+                      controller: numberController,
                       keyboardType: true,
                       txtHint: '81x-xxx-xxx',
                       txtObsure: false,
@@ -102,7 +109,7 @@ class LoginOrRegister extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             Padding(
@@ -113,12 +120,33 @@ class LoginOrRegister extends StatelessWidget {
                   MyButton(
                     text: 'Lanjut',
                     onTap: () {},
+                    onPress: () {
+                      setState(
+                        () {
+                          if (numberController.text == '27') {
+                            showResult = 'berhasil';
+                          } else {
+                            showResult = 'gagal';
+                          }
+                        },
+                      );
+                    },
                   ),
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 14.0, top: 10.0),
+              child: Text(
+                showResult,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             const Padding(
-              padding: const EdgeInsets.only(left: 14.0, top: 17),
+              padding: EdgeInsets.only(left: 14.0, top: 17),
               child: Row(
                 children: [
                   Text(
@@ -150,7 +178,7 @@ class LoginOrRegister extends StatelessWidget {
             OutlinedButton(
               onPressed: () {},
               style: OutlinedButton.styleFrom(
-                side: BorderSide(color: Colors.black12, width: 1.3),
+                side: const BorderSide(color: Colors.black12, width: 1.3),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),

@@ -5,12 +5,14 @@ class MyTextfield extends StatelessWidget {
   final String txtHint;
   final bool txtObsure;
   final bool keyboardType;
+  final TextEditingController controller;
 
   const MyTextfield({
     super.key,
     required this.txtHint,
     required this.txtObsure,
     required this.keyboardType,
+    required this.controller,
   });
 
   @override
@@ -18,6 +20,7 @@ class MyTextfield extends StatelessWidget {
     return Container(
       width: 300,
       child: TextField(
+        controller: controller,
         keyboardType: TextInputType.number,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
