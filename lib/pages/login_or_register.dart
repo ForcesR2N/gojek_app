@@ -4,7 +4,6 @@ import 'package:loginpage_gojek/utils/colors.dart';
 import 'package:loginpage_gojek/component/text_field.dart';
 
 class LoginOrRegister extends StatefulWidget {
-
   @override
   _LoginOrRegisterState createState() => _LoginOrRegisterState();
 }
@@ -45,7 +44,7 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
               child: Text(
                 'Selamat datang di Gojek!',
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 27,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -112,38 +111,6 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
             ),
             const SizedBox(
               height: 14,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 14.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyButton(
-                    text: 'Lanjut',
-                    onPress: () {
-                      setState(
-                        () {
-                          if (numberController.text == '27') {
-                            showResult = 'berhasil';
-                          } else {
-                            showResult = 'gagal';
-                          }
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 14.0, top: 10.0),
-              child: Text(
-                showResult,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
             const Padding(
               padding: EdgeInsets.only(left: 14.0, top: 17),
@@ -214,7 +181,61 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
                   ],
                 ),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 14.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyButton(
+                    text: 'Lanjut',
+                    onPress: () {
+                      setState(
+                        () {
+                          if (numberController.text == '27') {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Login Succesed!"),
+                                action: SnackBarAction(
+                                  label: 'Succecs',
+                                  onPressed: () {
+                                    print('Great');
+                                  },
+                                ),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Login Failed"),
+                                action: SnackBarAction(
+                                  label: 'Try Again',
+                                  onPressed: () {
+                                    print('Retry clicked');
+                                  },
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 14.0, top: 10.0),
+                child: Text(
+                  showResult,
+                  style: const TextStyle(
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

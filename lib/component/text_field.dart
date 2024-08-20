@@ -24,7 +24,7 @@ class MyTextfield extends StatelessWidget {
         keyboardType: TextInputType.number,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 25,
+          fontSize: 23,
           color: AppColor.fontAddNumber,
         ),
         decoration: InputDecoration(
