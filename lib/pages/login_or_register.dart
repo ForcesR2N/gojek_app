@@ -198,9 +198,7 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
                                 content: Text("Login Succesed!"),
                                 action: SnackBarAction(
                                   label: 'Succecs',
-                                  onPressed: () {
-                                    print('Great');
-                                  },
+                                  onPressed: () {},
                                 ),
                               ),
                             );
@@ -210,9 +208,7 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
                                 content: Text("Login Failed"),
                                 action: SnackBarAction(
                                   label: 'Try Again',
-                                  onPressed: () {
-                                    print('Retry clicked');
-                                  },
+                                  onPressed: () {},
                                 ),
                               ),
                             );
